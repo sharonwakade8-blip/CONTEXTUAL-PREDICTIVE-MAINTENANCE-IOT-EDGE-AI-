@@ -1,0 +1,26 @@
+SHARON DEVDAN WAKADE
+DATA SCIENCE & MACHINE LEARNING
+CONTACT
+sharonwakade8@gmail.com
+9112770687
+https://www.linkedin.com/in/%20sharon-wakade-448058217
+https://github.com/sharonwakade8-blip
+SUMMARY
+Master's & graduate in Data Science with skills in Python, Machine Learning, Data Analysis, and AI. Passionate about transforming data into actionable insights and building intelligent solutions for real-world challenges and internships  
+SKILLS
+- Python
+- Machine learning
+- Data Analysis
+- Sql
+- Github.
+EXPERIENCE
+Data science & Machine Learning internship  | Infotech solutions 
+2026-06 - Present
+Data Science & Machine Learning Intern
+Worked on Python-based data science and machine learning projects, including data analysis, model development, and AI-driven solutions for real-world applications.
+PROJECTS
+Airline Ticket Pricing using Reinforcement Learning
+Developed a Reinforcement Learning-based Q-Learning Agent for Airline Ticket Pricing. Implemented the Q-Learning algorithm, Q-table updates, reward optimization, and action selection strategies to learn optimal ticket pricing decisions. Trained and evaluated the agent using a simulated airline environment to maximize revenue and improve pricing efficiency. Collaborated with the team to integrate the Q-Learning model into the complete Airline Dynamic Pricing system.
+This project implements a Q-Learning Agent using Reinforcement Learning in Python. The agent learns to navigate a 10×10 grid environment and reach a predefined goal position by maximizing rewards through trial and error, The training process runs for 100 episodes. After training, a graph is generated showing the total reward obtained in each episode. The graph demonstrates that the agent's performance improves over time as it learns the optimal strategy.
+
+https://github.com/sharonwakade8-blip
