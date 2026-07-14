@@ -30,15 +30,6 @@ PREDICTIVE_MAINTENANCE/
 │── README.md
 │── main.py
 
- ## ⚙️ Installation
-
-### Clone Repository
-
-```bash
-git clone https://github.com/your-username/DSML_PREDICTIVE_MAINTENANCE.git
-cd DSML_PREDICTIVE_MAINTENANCE
-```
-
 ### Create Virtual Environment
 
 Windows
