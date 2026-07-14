@@ -1,6 +1,7 @@
-🔧 Contextual Predictive Maintenance (IoT Edge AI) .
+🔧 Contextual Predictive Maintenance is an (IoT Edge AI).
 
-## 📌 Project Overview  : Contextual Predictive Maintenance is an IoT Edge AI system that predicts machine failures using sensor and weather data. The project applies machine learning to estimate failure probability and provides an interactive Streamlit dashboard for visualization.
+## 📌 Project Overview  :
+Contextual Predictive Maintenance is an IoT Edge AI system that predicts machine failures using sensor and weather data. The project applies machine learning to estimate failure probability and provides an interactive Streamlit dashboard for visualization.
 - Predict machine failures using IoT sensor data.
 - Improve prediction accuracy with contextual weather information.
 - Reduce unexpected equipment downtime.
@@ -107,20 +108,15 @@ streamlit run dashboard/app.py
 
 ---
 
-## 📷 Dashboard Preview
-
-(Add dashboard screenshot here)
-
----
-
 ## 👨‍💻 Team
 
-- Team Leader: Your Name
-- Team Members:
-  - Member 1
-  - Member 2
-  - Member 3
-  - Member 4
+- Team Members :
+  - Member 1 : Sharon Wakade 
+  - Member 2 : Sakshi jamadar 
+  - Member 3 : Samruddhi Naikode 
+  - Member 4 : vishnu ES
+  - Member 5 : Venkatesh cs
+  - Member 6 : Avinash k  
 
 ---
 
