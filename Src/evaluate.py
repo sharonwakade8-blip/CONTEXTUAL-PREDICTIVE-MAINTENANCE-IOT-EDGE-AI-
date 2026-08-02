@@ -48,4 +48,6 @@ with open("Reports/metrics.txt", "w") as f:
     f.write(f"ROC-AUC  : {roc_auc:.4f}\n\n")
     f.write("Classification Report\n\n")
     f.write(classification_report(y_test, y_pred))
+    from utils import generate_reports
+    generate_reports(model, X_test, y_test)
     
