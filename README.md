@@ -98,9 +98,9 @@ streamlit run dashboard/app.py
   - Member 1 : Sharon Wakade 
   - Member 2 : Sakshi jamadar 
   - Member 3 : Samruddhi Naikode 
-  - Member 4 : vishnu ES
+  - Member 4 : Avinash k 
   - Member 5 : Venkatesh cs
-  - Member 6 : Avinash k  
+  - Member 6 : vishnu ES
 
 ---
 
