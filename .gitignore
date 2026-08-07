@@ -1,0 +1,6 @@
+venv/
+data/raw/
+data/processed/
+data/external/
+data/final/
+__pycache__/
