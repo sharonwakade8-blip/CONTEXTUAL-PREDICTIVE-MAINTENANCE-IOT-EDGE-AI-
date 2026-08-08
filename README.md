@@ -119,4 +119,4 @@ streamlit run dashboard/app.py
 
 ## 📄 License
 
-This project is developed for academic purposes.
+This project is developed for academic purposes
