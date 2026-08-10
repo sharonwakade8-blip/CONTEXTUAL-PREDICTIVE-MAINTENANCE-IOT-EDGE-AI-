@@ -1,0 +1,37 @@
+,Machine failure
+HDF,0.5757981256642756
+OSF,0.5310814436666423
+PWF,0.522810249384391
+TWF,0.36290195194513075
+Torque [Nm],0.19136976665172045
+Torque [Nm]_roll_std,0.14988489559864374
+Torque [Nm]_roll_mean,0.11144311234215462
+Tool wear [min]_roll_mean,0.10657885262398034
+Tool wear [min],0.10539908584309232
+Tool wear [min]_lag_1,0.10322077083067435
+Tool wear [min]_lag_2,0.10115519311348369
+Tool wear [min]_lag_3,0.09519076737212996
+Rotational speed [rpm]_roll_std,0.0940661504264365
+Air temperature [K],0.08251437189590634
+Air temperature [K]_lag_1,0.08246484323865878
+Air temperature [K]_roll_mean,0.08236460818362297
+Air temperature [K]_lag_2,0.08205559269462931
+Air temperature [K]_lag_3,0.08200608255234272
+Rotational speed [rpm],0.04420574642578998
+Process temperature [K],0.03589775869500295
+Process temperature [K]_roll_mean,0.0348900237102855
+Process temperature [K]_lag_1,0.03455887605355868
+Process temperature [K]_lag_2,0.034149141279151786
+Process temperature [K]_lag_3,0.03411189266326871
+Rotational speed [rpm]_roll_mean,0.025040516711207536
+UDI,0.022999611007599476
+Torque [Nm]_lag_3,0.018720087103341828
+Rotational speed [rpm]_lag_3,0.01344783370927318
+Process temperature [K]_roll_std,0.012363587138766612
+Air temperature [K]_roll_std,0.008222032152748741
+Tool wear [min]_roll_std,0.0068445658084277
+Torque [Nm]_lag_1,0.005008679346746272
+RNF,0.004513565532700658
+Rotational speed [rpm]_lag_2,0.001216199603809614
+Torque [Nm]_lag_2,0.0010738368783365856
+Rotational speed [rpm]_lag_1,0.0008736436543461732
