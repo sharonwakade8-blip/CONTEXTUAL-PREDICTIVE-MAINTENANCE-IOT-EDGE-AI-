@@ -1,6 +1,9 @@
 venv/
-data/raw/
-data/processed/
-data/external/
-data/final/
 __pycache__/
+.pytest_cache/
+
+# Data and Models MUST be excluded according to Infotact Evaluation Protocol
+Data/
+Models/
+data/
+models/

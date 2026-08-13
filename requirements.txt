@@ -1,0 +1,13 @@
+# Dashboard & Deployment Dependencies
+streamlit
+lightgbm
+shap
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+plotly
+joblib
+pytest
+imbalanced-learn
