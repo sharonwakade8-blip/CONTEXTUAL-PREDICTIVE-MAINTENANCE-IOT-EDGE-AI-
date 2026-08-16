@@ -1,51 +1,89 @@
-from lightgbm import LGBMClassifier
-from sklearn.model_selection import GridSearchCV
+"""
+train.py
+Role: Model Training
+Project: Contextual Predictive Maintenance (IoT Edge AI)
+"""
+
 import joblib
-import os
+import pandas as pd
+from pathlib import Path
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
-from preprocess import load_and_preprocess_data
 
-# Load data
-X_train, X_test, y_train, y_test, scaler = load_and_preprocess_data()
+def load_data(file_path):
+    """Load processed dataset."""
+    return pd.read_csv(file_path)
 
-# Create model
-model = LGBMClassifier(random_state=42)
 
-# Hyperparameter grid
-param_grid = {
-    "n_estimators": [200],
-    "learning_rate": [0.1],
-    "max_depth": [10],
-    "num_leaves": [31]
-}
+def train_model(df):
+    """Train Random Forest model."""
 
-# Grid Search
-grid_search = GridSearchCV(
-    estimator=model,
-    param_grid=param_grid,
-    cv=5,
-    scoring="accuracy",
-    n_jobs=-1
-)
+    # Target
+    y = df["Machine failure"]
 
-# Train
-grid_search.fit(X_train, y_train)
+    # Features
+    X = df.drop(columns=["Machine failure"])
 
-# Best model
-best_model = grid_search.best_estimator_
+    # Remove unwanted columns if they exist
+    drop_cols = ["UDI", "Product ID", "Type", "timestamp"]
 
-# Create Models folder if needed
-os.makedirs("Models", exist_ok=True)
+    for col in drop_cols:
+        if col in X.columns:
+            X.drop(columns=col, inplace=True)
 
-# Save model and scaler
-joblib.dump(best_model, "Models/lightgbm_model.pkl")
-joblib.dump(scaler, "Models/scaler.pkl")
+    # Keep only numeric columns
+    X = X.select_dtypes(include=["number"])
 
-print("Best Parameters:")
-print(grid_search.best_params_)
+    print("\nTraining Features:")
+    print(X.columns.tolist())
 
-print("\nBest Cross Validation Score:")
-print(grid_search.best_score_)
+    # Split data
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.20,
+        random_state=42,
+        stratify=y
+    )
 
-print("\nTraining completed successfully!")
+    # Create model
+    model = RandomForestClassifier(
+        n_estimators=100,
+        random_state=42
+    )
 
+    # Train model
+    model.fit(X_train, y_train)
+
+    # Test accuracy
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+
+    print(f"\nTraining Accuracy: {accuracy:.4f}")
+
+    return model
+
+
+def save_model(model, output_path):
+    """Save trained model."""
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(model, output_path)
+    print(f"Model saved to {output_path}")
+
+
+def main():
+    input_file = "data/processed/fused_data.csv"
+    model_file = "models/model.pkl"
+
+    df = load_data(input_file)
+
+    model = train_model(df)
+
+    save_model(model, model_file)
+
+
+if __name__ == "__main__":
+    main()
+    
