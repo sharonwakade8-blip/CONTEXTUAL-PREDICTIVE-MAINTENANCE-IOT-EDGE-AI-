@@ -1,7 +1,9 @@
 import joblib
+import os
 
-# Load model
-model = joblib.load("Models/lightgbm_model.pkl")
+def test_model_exists():
+    assert os.path.exists("models/model.pkl")
 
-print("Model loaded successfully!")
-print(type(model))
+def test_model_load():
+    model = joblib.load("models/model.pkl")
+    assert model is not None
