@@ -1,53 +1,84 @@
-import os
+"""
+evaluate.py
+Role: Model Evaluation
+Project: Contextual Predictive Maintenance (IoT Edge AI)
+"""
+
 import joblib
+import pandas as pd
 from sklearn.metrics import (
     accuracy_score,
     precision_score,
     recall_score,
     f1_score,
-    roc_auc_score,
-    classification_report
+    confusion_matrix,
+    classification_report,
 )
 
-from preprocess import load_and_preprocess_data
 
-# Load data
-X_train, X_test, y_train, y_test, scaler = load_and_preprocess_data()
+def load_model(model_path):
+    """Load trained model."""
+    return joblib.load(model_path)
 
-# Load trained model
-model = joblib.load("Models/lightgbm_model.pkl")
 
-# Predictions
-y_pred = model.predict(X_test)
-y_prob = model.predict_proba(X_test)[:, 1]
+def evaluate_model(model, data_path):
+    """Evaluate trained model."""
 
-# Metrics
-accuracy = accuracy_score(y_test, y_pred)
-precision = precision_score(y_test, y_pred)
-recall = recall_score(y_test, y_pred)
-f1 = f1_score(y_test, y_pred)
-roc_auc = roc_auc_score(y_test, y_prob)
+    # Load dataset
+    df = pd.read_csv(data_path)
 
-print(f"Accuracy : {accuracy:.4f}")
-print(f"Precision: {precision:.4f}")
-print(f"Recall   : {recall:.4f}")
-print(f"F1 Score : {f1:.4f}")
-print(f"ROC-AUC  : {roc_auc:.4f}")
+    # Target
+    y = df["Machine failure"]
 
-print("\nClassification Report\n")
-print(classification_report(y_test, y_pred))
+    # Features
+    X = df.drop(columns=["Machine failure"])
 
-# Save metrics
-os.makedirs("Reports", exist_ok=True)
+    # Remove unwanted columns
+    drop_cols = ["UDI", "Product ID", "Type", "timestamp"]
 
-with open("Reports/metrics.txt", "w") as f:
-    f.write(f"Accuracy : {accuracy:.4f}\n")
-    f.write(f"Precision: {precision:.4f}\n")
-    f.write(f"Recall   : {recall:.4f}\n")
-    f.write(f"F1 Score : {f1:.4f}\n")
-    f.write(f"ROC-AUC  : {roc_auc:.4f}\n\n")
-    f.write("Classification Report\n\n")
-    f.write(classification_report(y_test, y_pred))
-    from utils import generate_reports
-    generate_reports(model, X_test, y_test)
+    for col in drop_cols:
+        if col in X.columns:
+            X.drop(columns=col, inplace=True)
+
+    # Keep only numeric columns
+    X = X.select_dtypes(include=["number"])
+
+    print("\nFeatures used for evaluation:")
+    print(X.columns.tolist())
+
+    # Predictions
+    predictions = model.predict(X)
+
+    # Metrics
+    accuracy = accuracy_score(y, predictions)
+    precision = precision_score(y, predictions)
+    recall = recall_score(y, predictions)
+    f1 = f1_score(y, predictions)
+
+    print("\n========== MODEL EVALUATION ==========")
+    print(f"Accuracy : {accuracy:.4f}")
+    print(f"Precision: {precision:.4f}")
+    print(f"Recall   : {recall:.4f}")
+    print(f"F1 Score : {f1:.4f}")
+
+    print("\nConfusion Matrix")
+    print(confusion_matrix(y, predictions))
+
+    print("\nClassification Report")
+    print(classification_report(y, predictions))
+
+
+def main():
+    model_path = "models/model.pkl"
+    test_data = "data/processed/fused_data.csv"
+
+    model = load_model(model_path)
+
+    evaluate_model(model, test_data)
+
+
+if __name__ == "__main__":
+    main()
+
+
     
